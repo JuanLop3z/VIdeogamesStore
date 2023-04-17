@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "retoSophos", "retoSophos\retoSophos.csproj", "{99DFBA74-44C7-4CC8-B1AC-E34C2F06E905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "retoSophos.Tests", "retoSophos.Tests\retoSophos.Tests.csproj", "{7C9521BD-3492-486C-BDCE-CA3C2F261C87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99DFBA74-44C7-4CC8-B1AC-E34C2F06E905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99DFBA74-44C7-4CC8-B1AC-E34C2F06E905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99DFBA74-44C7-4CC8-B1AC-E34C2F06E905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99DFBA74-44C7-4CC8-B1AC-E34C2F06E905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9521BD-3492-486C-BDCE-CA3C2F261C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9521BD-3492-486C-BDCE-CA3C2F261C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9521BD-3492-486C-BDCE-CA3C2F261C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9521BD-3492-486C-BDCE-CA3C2F261C87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {627D1ABC-E84C-4E60-B19F-F7F4668590EF}
+	EndGlobalSection
+EndGlobal
