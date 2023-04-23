@@ -40,11 +40,12 @@ El proposito es desarrollar una aplicacion para una tienda de videojuegos que pe
 Clone el respositorio de Github y abralo en su VS, en la carpeta SQL se ubican los Scripts de la DB abralos y ejecutelos y ya podra correr el programa.
 
 ## 📁Tecnologias Utilizadas:
-*C#
-*ASP.Net
-*SQL Server
-*Bootstrap
-*PostMan
+
+* C#
+* ASP.Net
+* SQL Server
+* Bootstrap
+* PostMan
 
 ## Creador:
 Juan Sebastian Lopez Galindo
