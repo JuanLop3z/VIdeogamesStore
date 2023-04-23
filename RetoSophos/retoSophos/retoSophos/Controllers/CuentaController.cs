@@ -69,13 +69,15 @@ namespace retoSophos.Controllers
 
             if (registrado)
             {
-                return RedirectToAction("Login", "Login");
+                return RedirectToAction("Login", "Cuenta");
             }
             else
             {
                 return View();
             }
         }
+
+
 
         //Metodo para Iniciar sesion
         [HttpPost]
@@ -102,7 +104,7 @@ namespace retoSophos.Controllers
             if (usuario.IdUsuario != 0)
             {
                 Session["usuario"] = usuario;
-                return RedirectToAction("AddCliente", "Clientes");
+                return RedirectToAction("Principal", "Principal");
             }
             else
             {
@@ -110,6 +112,8 @@ namespace retoSophos.Controllers
                 return View();
             }
         }
+
+
 
         //Metodo para Cifrar Clave
         public static string cifrarClave(string texto)

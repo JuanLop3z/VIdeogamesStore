@@ -7,14 +7,27 @@ go
 Create proc sp_CrearClientes(
 @Identificacion varchar(50),
 @Nombres varchar(200),
-@Edad int
+@Edad int,
+--Mensajes de salida--
+@Registrado bit output,
+@Mensaje varchar(100) output
 )as 
 begin
-	insert into Clientes (Identificacion, Nombres, edad)
-	values (@Identificacion,@Nombres,@Edad)
+	--validando si usuario existe--
+	if(not exists(select * from Clientes where Identificacion = @Identificacion))
+		begin
+			insert into Clientes (Identificacion, Nombres, edad)
+			values (@Identificacion,@Nombres,@Edad)
+			set @Registrado = 1
+			set @Mensaje = 'Cliente registrado'
+		end	
+		else
+			begin
+			set @Registrado = 0
+			set @Mensaje = 'Cliente ya Existe'
+			end
 end
 go
-
 
 --PROCEDIMIENTO PARA REGISTRAR USUARIOS	--
 Create proc sp_RegistrarUsuario(
@@ -56,3 +69,33 @@ begin
 end
 go
 
+
+--PROCEDIMIENTO PARA REGISTRAR JUEGOS--
+Create proc sp_CrearJuego(
+@Nombre varchar(150),
+@Precio int,
+@Plataforma varchar(70),
+@Director varchar(70),
+@Protagonistas varchar(70),
+@ProductorMarca varchar(70),
+@FechaLanzamiento varchar(70),
+--Mensajes de salida--
+@Registrado bit output,
+@Mensaje varchar(100) output
+)as 
+begin
+	--validando si el Juego existe--
+	if(not exists(select * from Juegos where Nombre = @Nombre))
+		begin
+			insert into Juegos (Nombre,Precio,Plataforma,Director,Protagonistas,ProductorMarca,FechaLanzamiento)
+			values (@Nombre,@Precio,@Plataforma,@Director,@Protagonistas,@ProductorMarca,@FechaLanzamiento)
+			set @Registrado = 1
+			set @Mensaje = 'Juego Registrado'
+		end	
+		else
+			begin
+			set @Registrado = 0
+			set @Mensaje = 'El Juego ya Existe'
+			end
+end
+go
