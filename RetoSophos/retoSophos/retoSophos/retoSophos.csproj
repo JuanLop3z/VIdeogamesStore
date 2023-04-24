@@ -135,6 +135,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\EstadisticasController.cs" />
     <Compile Include="Controllers\JuegosController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +186,7 @@
     <Content Include="Views\Clientes\RegistrarCliente.cshtml" />
     <Content Include="Views\Juegos\CrearJuego.cshtml" />
     <Content Include="Views\Principal\Principal.cshtml" />
+    <Content Include="Views\Estadisticas\Estadistico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

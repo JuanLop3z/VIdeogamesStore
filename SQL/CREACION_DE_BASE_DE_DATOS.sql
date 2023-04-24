@@ -7,11 +7,11 @@ go
 
 --CREAMOS LA TABLA DE CLIENTES--
 create table Clientes(
-Identificacion varchar (50),
+Identificacion varchar (50) primary key,
 Nombres varchar(200),
 Estado bit default 1,
 Frecuencia int,
-edad int
+Edad int
 )
 go
 
@@ -39,4 +39,3 @@ Nombre varchar(50),
 Clave varchar(50)
 )
 go
-

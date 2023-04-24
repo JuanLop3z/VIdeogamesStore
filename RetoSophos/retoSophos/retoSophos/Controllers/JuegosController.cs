@@ -11,12 +11,12 @@ namespace retoSophos.Controllers
 {
     public class JuegosController : Controller
     {
-        // GET: Juegos
+        
         public ActionResult CrearJuego()
         {
             return View();
         }
-
+        
         [HttpPost]
         public ActionResult CrearJuego(Juegos juego)
         {

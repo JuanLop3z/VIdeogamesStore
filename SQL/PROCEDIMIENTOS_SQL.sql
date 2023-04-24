@@ -13,10 +13,10 @@ Create proc sp_CrearClientes(
 @Mensaje varchar(100) output
 )as 
 begin
-	--validando si usuario existe--
+	--validando si el cliente existe--
 	if(not exists(select * from Clientes where Identificacion = @Identificacion))
 		begin
-			insert into Clientes (Identificacion, Nombres, edad)
+			insert into Clientes (Identificacion, Nombres, Edad)
 			values (@Identificacion,@Nombres,@Edad)
 			set @Registrado = 1
 			set @Mensaje = 'Cliente registrado'
@@ -99,3 +99,10 @@ begin
 			end
 end
 go
+
+
+create proc sp_ListarClientes
+as
+begin
+	select * from Clientes
+	end

@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Login</title>
+    <title>VideoJuegos</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -25,13 +25,13 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Registrar Cliente</h3>
-
                 </div>
 
-
                 <div class="card-body">
+                    <!--Metodo a ejecutar-->
                     <form action="@Url.Action("CrearJuego","Juegos")" method="post">
 
+                        <!--Campos de escritura-->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -87,6 +87,8 @@
                             <input type="datetime" name="FechaLanzamiento" class="form-control" placeholder="Ingrese el Fecha Lanzamiento">
                         </div>
 
+
+                        <!--Lanzador de alerta-->
                         @if (ViewData["Mensaje"] != null)
                         {
                             <div class="alert alert-danger" role="alert">
@@ -95,13 +97,14 @@
 
                         }
 
+                        <!--Buttons-->
                         <div class="form-group">
                             <input type="submit" value="Ingresar" class="btn float-right login_btn">
                         </div>
                         <div class="form-group">
                             <input type="reset" value="Borrar" class="btn float-left cancel_btn">
                         </div>
-                        
+
                     </form>
                 </div>
 

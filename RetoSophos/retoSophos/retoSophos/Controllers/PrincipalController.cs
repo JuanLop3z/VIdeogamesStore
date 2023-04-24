@@ -8,7 +8,7 @@ namespace retoSophos.Controllers
 {
     public class PrincipalController : Controller
     {
-        // GET: Principal
+        //Vista Principal y menu de Opciones
         public ActionResult Principal()
         {
             return View();
