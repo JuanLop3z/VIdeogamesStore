@@ -101,8 +101,31 @@ end
 go
 
 
-create proc sp_ListarClientes
+create proc sp_ActualizarPrecio(
+@Nombre varchar(50),
+@Precio int,
+@Registrado bit output,
+@Mensaje varchar(100) output
+)
 as
 begin
-	select * from Clientes
-	end
+	--validando si el Juego existe--
+	if(exists(select Precio from Juegos where Nombre = @Nombre))
+		begin
+			update Juegos
+			set Precio = @Precio
+			where Nombre = @Nombre
+			set @Registrado = 1
+			set @Mensaje = 'Actualizado Correctamente'
+		end	
+		else
+			begin
+			set @Registrado = 0
+			set @Mensaje = 'El Juego no Existe'
+			end
+end
+go
+
+drop proc sp_ActualizarPrecio
+
+update Juegos set Precio = 347400 where Id = 1

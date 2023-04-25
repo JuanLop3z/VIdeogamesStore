@@ -1,0 +1,55 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Buscar";
+}
+
+<h2>Buscar</h2>
+
+@using (Html.BeginForm("Buscar", "Juegos"))
+{
+    <table class="table table-bordered table-striped">
+
+        <tr>
+            <td>
+                Buscador:@Html.TextBox("datoBuscar")
+            </td>
+            <td>
+                <input style="text-align:right" type="submit" name="name" value="Buscar" />
+            </td>
+        </tr>
+    </table>
+
+}
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nombres</th>
+        <th>Precio</th>
+        <th>Frecuencia</th>
+        <th>Plataforma</th>
+        <th>Director</th>
+        <th>Protagonistas</th>
+        <th>Productor/Marca</th>
+        <th>fechaLanzamiento</th>
+        <th>Estado</th>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+        </tr>
+    }
+
+</table>

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace retoSophos.Controllers
 {
@@ -65,19 +66,27 @@ namespace retoSophos.Controllers
         }
 
 
-        // GET: Clientes/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult listarClientes()
         {
-            return View();
+            DataTable data = new DataTable();
+
+            using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
+            {
+                //
+                cn.Open();
+                SqlDataAdapter sqlAD = new SqlDataAdapter("select * from Clientes", cn);
+
+                sqlAD.Fill(data);
+
+
+            }
+
+
+            return View(data);
         }
 
-        // GET: Clientes/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: Clientes/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {

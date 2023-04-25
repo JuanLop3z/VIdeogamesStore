@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace retoSophos.Controllers
 {
@@ -16,7 +17,7 @@ namespace retoSophos.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult CrearJuego(Juegos juego)
         {
@@ -61,6 +62,93 @@ namespace retoSophos.Controllers
             else
             {
                 ViewData["Mensaje"] = "El Juego ya Existe";
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public ActionResult Listarjuegos()
+        {
+            DataTable data = new DataTable();
+
+            using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
+            {
+                //
+                cn.Open();
+                SqlDataAdapter sqlAD = new SqlDataAdapter("select * from Juegos", cn);
+
+                sqlAD.Fill(data);
+
+
+            }
+
+            return View(data);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Buscar(string datoBuscar) 
+        {
+
+            DataTable datos = new DataTable();
+
+            using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
+            {
+                //
+                string busquedaSQL = string.Format("select * from Juegos where Director + Protagonistas + ProductorMarca + FechaLanzamiento like '%{0}%' order by Nombre asc", datoBuscar);
+                cn.Open();
+                SqlDataAdapter sqlAD = new SqlDataAdapter(busquedaSQL,cn);
+
+                sqlAD.Fill(datos);
+
+
+            }
+            return View(datos);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditarPrecio(Juegos juego)
+        {
+
+
+            //Son el estado de registro y el tipo de mensaje que devolvera
+            bool registrado;
+            string mensaje;
+
+
+
+            using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
+            {
+                //se agregan los valores a el proceso sp_RegistrarUsuario
+                SqlCommand cmd = new SqlCommand("sp_ActualizarPrecio", cn);
+                cmd.Parameters.AddWithValue("NombreJuego", juego.Nombre);
+                cmd.Parameters.AddWithValue("PrecioNuevo", juego.Precio);
+                cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
+                mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
+
+            }
+
+            ViewData["Mensajes"] = mensaje;
+
+            if (registrado)
+            {
+                return RedirectToAction("Listarjuegos", "Juegos");
+            }
+            else
+            {
+                ViewData["Mensaje"] = mensaje;
                 return View();
             }
         }

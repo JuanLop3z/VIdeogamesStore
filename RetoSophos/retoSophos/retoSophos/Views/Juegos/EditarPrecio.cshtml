@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "EditarPrecio";
+}
+
+<h2>EditarPrecio</h2>
+
+<div class="card-body">
+    <form action="@Url.Action("EditarPrecio","juegos")" method="post">
+
+
+        <!--Espacios de Escritura-->
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="NombreJuego" class="form-control" placeholder="Nombre del Juego">
+        </div>
+
+        <div class="input-group form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="PrecioNuevo" class="form-control" placeholder="Precio Nuevo">
+        </div>
+
+        <!--Alertas-->
+        @if (ViewData["Mensaje"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewData["Mensaje"]
+            </div>
+
+        }
+        <!--Buttons-->
+        <div class="form-group">
+            <input type="submit" value="Actualizar" class="btn float-right login_btn">
+        </div>
+    </form>
+</div>
+
+<!--Link para Registrarse-->
+<div class="card-footer">
+    <div class="d-flex justify-content-center links">
+        ¿Deseas Volver?<a href="@Url.Action("Listarjuegos","Juegos")">Lista de Juegos</a>
+    </div>
+</div>
+
+

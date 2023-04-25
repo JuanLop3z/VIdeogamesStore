@@ -41,3 +41,11 @@ exec sp_CrearJuego 'Assassins Creed 2', '347354', 'PlayStation 4/Microsoft Windo
 select @Registrado
 select @Mensaje
 
+
+--ACTUALIZAR LA TABLA DE JUEGOS(Precio)--
+declare @Registrado bit, @Mensaje varchar(100)
+
+exec sp_ActualizarPrecio 'Assassins Creed 2',  347500, @Registrado output, @Mensaje output
+
+select @Registrado
+select @Mensaje

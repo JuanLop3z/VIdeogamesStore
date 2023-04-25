@@ -6,7 +6,8 @@ using System.Web;
 namespace retoSophos.Models
 {
     public class Juegos
-    { 
+    {
+        public int Id { get; set; }
         public string Nombre { get; set;}
         public int Precio { get; set;}
         public string Frecuencia { get; set;}

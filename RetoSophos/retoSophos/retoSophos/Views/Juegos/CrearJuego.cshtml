@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "CrearJuego";
 }
 
 <!DOCTYPE html>
@@ -9,14 +9,6 @@
 <head>
     <title>VideoJuegos</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="~/Content/Css/Login.css" rel="stylesheet" />
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
 <body>
@@ -106,8 +98,19 @@
                         </div>
 
                     </form>
+
                 </div>
 
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    <a href="@Url.Action("Listarjuegos","Juegos")">Ver lista de Juegos</a>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    <a href="@Url.Action("Listarjuegos","Juegos")">Editar Precio</a>
+                </div>
             </div>
         </div>
     </div>
