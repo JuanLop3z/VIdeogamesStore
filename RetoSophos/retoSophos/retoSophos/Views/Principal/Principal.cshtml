@@ -1,7 +1,40 @@
-﻿
+﻿@model retoSophos.Models.AlquileresView
 @{
     ViewBag.Title = "Principal";
 }
+
+
 <!-- Usada para el centro de Mi pagina principal-->
 <h2>Principal</h2>
+<h2>Cliente mas frecuente</h2>
 
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>IdCliente</th>
+        <th>NumeroVentas</th>
+    </tr>
+
+    @foreach (System.Data.DataRow row in Model.Clientes.Rows)
+    {
+        <tr>
+            <td>@row["IdCliente"]</td>
+            <td>@row["NumeroVentas"]</td>
+        </tr>
+    }
+</table>
+
+<h2>Juego mas vendido</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>IdJuego</th>
+        <th>NumeroVentas</th>
+    </tr>
+
+    @foreach (System.Data.DataRow row in Model.Juegos.Rows)
+    {
+        <tr>
+            <td>@row["IdJuego"]</td>
+            <td>@row["NumeroVentas"]</td>
+        </tr>
+    }
+</table>

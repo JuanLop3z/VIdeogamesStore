@@ -18,6 +18,11 @@ namespace retoSophos.Controllers
             return View();
         }
 
+        public ActionResult EditarPrecio()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult CrearJuego(Juegos juego)
         {
@@ -57,7 +62,7 @@ namespace retoSophos.Controllers
 
             if (registrado)
             {
-                return RedirectToAction("Login", "Cuenta");
+                return RedirectToAction("Listarjuegos", "Juegos");
             }
             else
             {
@@ -88,7 +93,7 @@ namespace retoSophos.Controllers
 
 
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Buscar(string datoBuscar) 
         {
 
@@ -109,7 +114,7 @@ namespace retoSophos.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPut]
         public ActionResult EditarPrecio(Juegos juego)
         {
 
@@ -153,4 +158,5 @@ namespace retoSophos.Controllers
             }
         }
     }
+
 }

@@ -73,6 +73,7 @@ namespace retoSophos.Controllers
             }
             else
             {
+                ViewData["Mensajes"] = "El usuario ya existe";
                 return View();
             }
         }
@@ -108,7 +109,7 @@ namespace retoSophos.Controllers
             }
             else
             {
-                ViewData["Mensaje"] = "usuario no encontrado";
+                ViewData["Mensaje"] = "Usuario no encontrado";
                 return View();
             }
         }

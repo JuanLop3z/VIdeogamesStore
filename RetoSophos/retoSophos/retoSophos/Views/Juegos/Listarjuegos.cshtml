@@ -27,13 +27,11 @@
         <th>Id</th>
         <th>Nombres</th>
         <th>Precio</th>
-        <th>Frecuencia</th>
         <th>Plataforma</th>
         <th>Director</th>
         <th>Protagonistas</th>
         <th>Productor/Marca</th>
         <th>fechaLanzamiento</th>
-        <th>Estado</th>
     </tr>
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
@@ -46,9 +44,12 @@
             <td>@Model.Rows[i][5]</td>
             <td>@Model.Rows[i][6]</td>
             <td>@Model.Rows[i][7]</td>
-            <td>@Model.Rows[i][8]</td>
-            <td>@Model.Rows[i][9]</td>
         </tr>
     }
 
 </table>
+<div class="card-footer">
+    <div class="d-flex justify-content-center links">
+        <a href="@Url.Action("CrearJuego","Juegos")">Crear Juego Nuevo</a>
+    </div>
+</div>

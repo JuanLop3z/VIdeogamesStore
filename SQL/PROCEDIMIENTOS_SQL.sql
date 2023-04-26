@@ -100,10 +100,11 @@ begin
 end
 go
 
-
+--ACTUALIZAR EL PRECIO DEL JUEGO--
 create proc sp_ActualizarPrecio(
 @Nombre varchar(50),
 @Precio int,
+--Mensajes de salida--
 @Registrado bit output,
 @Mensaje varchar(100) output
 )
@@ -126,6 +127,49 @@ begin
 end
 go
 
-drop proc sp_ActualizarPrecio
 
-update Juegos set Precio = 347400 where Id = 1
+
+--PROCEDIMIENTO PARA REGISTRAR ALQUILERES--
+Create proc sp_RegistrarAlquiler(
+@IdCliente varchar(150),
+@NombreJuego varchar(100),
+--Mensajes de salida--
+@Registrado bit output,
+@Mensaje varchar(100) output
+)as 
+begin
+	
+	set nocount on
+	--validando si el nombre del juego existe--
+	if(exists(select * from Juegos where Nombre = @NombreJuego))
+		begin
+			insert into Alquileres (IdCliente,IdJuego)
+			values (@IdCliente, (select Id from Juegos where Nombre = @NombreJuego))
+			set @Registrado = 1
+			set @Mensaje = 'Alquiler registrado exitosamente'
+		end	
+		else
+			begin
+			set @Registrado = 0
+			set @Mensaje = 'No se pudo registrar el alquiler'
+			end
+end
+go
+
+
+--Quienes son los primeros--
+SELECT IdCliente, COUNT(*) as NumeroVentas FROM Alquileres GROUP BY IdCliente ;
+SELECT IdJuego, COUNT(*) as NumeroVentas FROM Alquileres GROUP BY IdJuego ;
+
+
+--aaaa--
+SELECT c.Identificacion, c.Nombres, a.IdJuego
+FROM clientes c
+INNER JOIN alquileres a ON c.Identificacion = a.IdCliente
+WHERE a.IdJuego IS NOT NULL
+
+SELECT c.Identificacion, c.Nombres, j.nombre AS juego_rentado
+FROM clientes c
+INNER JOIN alquileres a ON c.Identificacion = a.IdCliente
+INNER JOIN juegos j ON a.IdJuego = j.Id
+WHERE a.IdJuego IS NOT NULL

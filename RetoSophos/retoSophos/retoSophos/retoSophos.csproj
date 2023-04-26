@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AlquileresController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\JuegosController.cs" />
@@ -140,6 +141,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Alquileres.cs" />
+    <Compile Include="Models\AlquileresView.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\ConexionDB.cs" />
     <Compile Include="Models\Juegos.cs" />
@@ -189,6 +192,8 @@
     <Content Include="Views\Juegos\Listarjuegos.cshtml" />
     <Content Include="Views\Juegos\Buscar.cshtml" />
     <Content Include="Views\Juegos\EditarPrecio.cshtml" />
+    <Content Include="Views\Alquileres\RegistrarAlquiler.cshtml" />
+    <Content Include="Views\Alquileres\listaAlquileres.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
