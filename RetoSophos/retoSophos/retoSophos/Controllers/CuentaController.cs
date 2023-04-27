@@ -13,13 +13,16 @@ namespace retoSophos.Controllers
 {
     public class CuentaController : Controller
     {
-        // GET: Login
+        //Son el estado de registro y el tipo de mensaje que devolvera
+        private bool registrado;
+        private string mensaje;
+
+
         public ActionResult Login()
         {
             return View();
         }
 
-        // POST: Registrar
         public ActionResult Registrar()
         {
             return View();
@@ -29,9 +32,7 @@ namespace retoSophos.Controllers
         [HttpPost]
         public ActionResult Registrar(Usuario usuario)
         {
-            //Son el estado de registro y el tipo de mensaje que devolvera
-            bool registrado;
-            string mensaje;
+
             if (usuario.Clave == usuario.ConfirmarClave)
             {
                 usuario.Clave = cifrarClave(usuario.Clave);
@@ -41,8 +42,6 @@ namespace retoSophos.Controllers
                 ViewData["Mensaje"] = "Las contraseñas no coinciden";
                 return View();
             }
-
-
 
 
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
@@ -79,8 +78,6 @@ namespace retoSophos.Controllers
         }
 
 
-
-        //Metodo para Iniciar sesion
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
@@ -115,8 +112,6 @@ namespace retoSophos.Controllers
         }
 
 
-
-        //Metodo para Cifrar Clave
         public static string cifrarClave(string texto)
         {
             StringBuilder Sb = new StringBuilder();

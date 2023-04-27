@@ -12,7 +12,10 @@ namespace retoSophos.Controllers
 {
     public class JuegosController : Controller
     {
-        
+        //Son el estado de registro y el tipo de mensaje que devolvera
+        private bool registrado;
+        private string mensaje;
+        DataTable data = new DataTable();
         public ActionResult CrearJuego()
         {
             return View();
@@ -23,16 +26,11 @@ namespace retoSophos.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult CrearJuego(Juegos juego)
         {
-            //Son el estado de registro y el tipo de mensaje que devolvera
-            bool registrado;
-            string mensaje;
-
-
-
-
+            
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
                 //se agregan los valores a el proceso sp_CrearJuego
@@ -75,8 +73,7 @@ namespace retoSophos.Controllers
         [HttpGet]
         public ActionResult Listarjuegos()
         {
-            DataTable data = new DataTable();
-
+            
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
                 //
@@ -85,9 +82,7 @@ namespace retoSophos.Controllers
 
                 sqlAD.Fill(data);
 
-
             }
-
             return View(data);
         }
 
@@ -97,33 +92,24 @@ namespace retoSophos.Controllers
         public ActionResult Buscar(string datoBuscar) 
         {
 
-            DataTable datos = new DataTable();
-
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
-                //
+                
                 string busquedaSQL = string.Format("select * from Juegos where Director + Protagonistas + ProductorMarca + FechaLanzamiento like '%{0}%' order by Nombre asc", datoBuscar);
                 cn.Open();
                 SqlDataAdapter sqlAD = new SqlDataAdapter(busquedaSQL,cn);
 
-                sqlAD.Fill(datos);
+                sqlAD.Fill(data);
 
 
             }
-            return View(datos);
+            return View(data);
         }
 
 
         [HttpPut]
         public ActionResult EditarPrecio(Juegos juego)
         {
-
-
-            //Son el estado de registro y el tipo de mensaje que devolvera
-            bool registrado;
-            string mensaje;
-
-
 
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
@@ -141,7 +127,6 @@ namespace retoSophos.Controllers
 
                 registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
                 mensaje = cmd.Parameters["Mensaje"].Value.ToString();
-
 
             }
 

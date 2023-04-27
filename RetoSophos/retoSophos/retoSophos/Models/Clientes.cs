@@ -9,8 +9,6 @@ namespace retoSophos.Models
     {
         public string Identificacion { get; set; }
         public string Nombres { get; set; }
-        public char Estado { get; set; }
-        public int Frecuencia { get; set; }
         public int Edad { get; set; }
     }
 }

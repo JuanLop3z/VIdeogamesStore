@@ -162,14 +162,17 @@ SELECT IdCliente, COUNT(*) as NumeroVentas FROM Alquileres GROUP BY IdCliente ;
 SELECT IdJuego, COUNT(*) as NumeroVentas FROM Alquileres GROUP BY IdJuego ;
 
 
---aaaa--
-SELECT c.Identificacion, c.Nombres, a.IdJuego
-FROM clientes c
-INNER JOIN alquileres a ON c.Identificacion = a.IdCliente
-WHERE a.IdJuego IS NOT NULL
-
-SELECT c.Identificacion, c.Nombres, j.nombre AS juego_rentado
+--Traer clientes--
+SELECT c.Identificacion, c.Nombres, j.nombre AS juegoRentado, a.Fecha
 FROM clientes c
 INNER JOIN alquileres a ON c.Identificacion = a.IdCliente
 INNER JOIN juegos j ON a.IdJuego = j.Id
 WHERE a.IdJuego IS NOT NULL
+
+
+--Ventas del dia--
+SELECT j.Nombre AS juego, c.Nombres AS nombre_cliente, c.Identificacion, convert(date, a.Fecha) as Fecha_Alquiler
+FROM alquileres a
+INNER JOIN juegos j ON a.IdJuego = j.Id
+INNER JOIN clientes c ON a.IdCliente = c.Identificacion
+WHERE a.Fecha >= '2023-04-25' and a.Fecha <= '2023-04-26'

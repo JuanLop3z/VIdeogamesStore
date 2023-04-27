@@ -194,6 +194,7 @@
     <Content Include="Views\Juegos\EditarPrecio.cshtml" />
     <Content Include="Views\Alquileres\RegistrarAlquiler.cshtml" />
     <Content Include="Views\Alquileres\listaAlquileres.cshtml" />
+    <Content Include="Views\Alquileres\filtrarVentas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

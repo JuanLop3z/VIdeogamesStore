@@ -11,16 +11,18 @@ namespace retoSophos.Controllers
 {
     public class PrincipalController : Controller
     {
-        //Vista Principal y menu de Opciones
+        //Modelo para hacer los dataTable y poder devolverlos en la vista
+        private AlquileresView viewModel = new AlquileresView();
 
+
+        //Vista Principal y menu de Opciones
         [HttpGet]
         public ActionResult Principal() 
         {
-            AlquileresView viewModel = new AlquileresView();
-
+            
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
-                //
+                //Sentencia usada para contar los numeros de ventas por IdCliente
                 string clientesql = ("SELECT IdCliente, COUNT(*) as NumeroVentas FROM Alquileres GROUP BY IdCliente");
                 cn.Open();
                 SqlDataAdapter sqlCli = new SqlDataAdapter(clientesql, cn);

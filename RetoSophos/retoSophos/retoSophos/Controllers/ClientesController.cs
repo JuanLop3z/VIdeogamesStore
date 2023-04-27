@@ -12,27 +12,25 @@ namespace retoSophos.Controllers
 {
     public class ClientesController : Controller
     {
-        // GET: Clientes
+        //Son el estado de registro y el tipo de mensaje que devolvera
+        private bool registrado;
+        private string mensaje;
+        private DataTable data = new DataTable();
+
+
         public ActionResult RegistrarCliente()
         {
             return View();
         }
 
 
-
         [HttpPost]
         public ActionResult RegistrarCliente(Clientes cliente)
         {
-            //Son el estado de registro y el tipo de mensaje que devolvera
-            bool registrado;
-            string mensaje;
-
-
-
 
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
-                //se agregan los valores a el proceso sp_RegistrarUsuario
+                //se agregan los valores a el proceso sp_CrearClientes
                 SqlCommand cmd = new SqlCommand("sp_CrearClientes", cn);
                 cmd.Parameters.AddWithValue("Identificacion", cliente.Identificacion);
                 cmd.Parameters.AddWithValue("Nombres", cliente.Nombres);
@@ -69,11 +67,10 @@ namespace retoSophos.Controllers
         [HttpGet]
         public ActionResult listarClientes()
         {
-            DataTable data = new DataTable();
-
+            
             using (SqlConnection cn = new SqlConnection(ConexionDB.conexion))
             {
-                //
+
                 cn.Open();
                 SqlDataAdapter sqlAD = new SqlDataAdapter("select * from Clientes", cn);
 
@@ -81,69 +78,9 @@ namespace retoSophos.Controllers
 
 
             }
-
-
             return View(data);
         }
 
 
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("RegistrarCliente");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Clientes/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Clientes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("RegistrarCliente");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Clientes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Clientes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("RegistrarCliente");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
