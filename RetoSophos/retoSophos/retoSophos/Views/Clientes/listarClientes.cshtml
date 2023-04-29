@@ -6,22 +6,27 @@
 <h2>listarClientes</h2>
 
 <table class="table table-bordered table-striped">
-    <tr>
-        <th>Identificacion</th>
-        <th>Nombres</th>
-        <th>Edad</th>
-        
-    </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
-    {
+    <thead>
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
-            
+            <th>Identificacion</th>
+            <th>Nombres</th>
+            <th>Edad</th>
+
         </tr>
-    }
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+
+            </tr>
+        }
+    <tbody>    
 </table>
+
 <div class="card-footer">
     <div class="d-flex justify-content-center links">
         <a href="@Url.Action("RegistrarCliente","Clientes")">Registrar Cliente Nuevo</a>

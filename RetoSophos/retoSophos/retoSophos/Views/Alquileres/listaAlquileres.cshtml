@@ -3,44 +3,57 @@
     ViewBag.Title = "listaAlquileres";
 }
 
-<h2>Lista Alquileres</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Alquileres</title>
+</head>
 
-@using (Html.BeginForm("filtrarVentas", "Alquileres"))
-{
+<body>
+    <h2>Lista De Alquileres</h2>
+
+    <!--Cargue del metodo-->
+    @using (Html.BeginForm("filtrarVentas", "Alquileres"))
+    {
+        <table class="table table-bordered table-striped">
+
+            <tr>
+                <td>
+                    Ventas del dia:@Html.TextBox("datoBuscar")
+                </td>
+                <td>
+                    <input style="text-align:right" type="submit" name="name" value="Buscar" />
+                </td>
+            </tr>
+        </table>
+
+    }
+
+    <!--Tabla-->
     <table class="table table-bordered table-striped">
-
         <tr>
-            <td>
-                Ventas del dia:@Html.TextBox("datoBuscar")
-            </td>
-            <td>
-                <input style="text-align:right" type="submit" name="name" value="Buscar" />
-            </td>
+            <th>Identificacion</th>
+            <th>Nombres</th>
+            <th>Juego Rentado</th>
+            <th>Fecha de Alquiler</th>
         </tr>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+                <td>@Model.Rows[i][3]</td>
+            </tr>
+        }
     </table>
 
-}
-
-
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>Identificacion</th>
-        <th>Nombres</th>
-        <th>Juego Rentado</th>
-        <th>Fecha de Alquiler</th>
-    </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
-    {
-        <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
-        </tr>
-    }
-</table>
-<div class="card-footer">
-    <div class="d-flex justify-content-center links">
-        <a href="@Url.Action("RegistrarAlquiler","Alquileres")">Registrar Alquiler</a>
+    <!--Otras pestañas-->
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            <a href="@Url.Action("RegistrarAlquiler","Alquileres")">Registrar Alquiler</a>
+        </div>
     </div>
-</div>
+
+</body>
+</html>

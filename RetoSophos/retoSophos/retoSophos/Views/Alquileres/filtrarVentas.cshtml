@@ -3,39 +3,52 @@
     ViewBag.Title = "filtrarVentas";
 }
 
-<h2>Ventas del Dia </h2>
+<!DOCTYPE html>
+<head>
+    <title>Ventas del Dia</title>
+</head>
 
-@using (Html.BeginForm("filtrarVentas", "Alquileres"))
-{
-    <table class="table table-bordered table-striped">
-
-        <tr>
-            <td>
-                Ventas del dia:@Html.TextBox("datoBuscar")
-            </td>
-            <td>
-                <input style="text-align:right" type="submit" name="name" value="Buscar" />
-            </td>
-        </tr>
-    </table>
-
-}
-
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>Juego</th>
-        <th>Cliente</th>
-        <th>Identificacion</th>
-        <th>Fecha del alquiler</th>
-    </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
+<body>
+    <h2>Ventas del Dia</h2>
+    <!--Cargue del metodo-->
+    @using (Html.BeginForm("filtrarVentas", "Alquileres"))
     {
-        <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
-        </tr>
-    }
+        <table class="table table-bordered table-striped">
 
-</table>
+            <tr>
+                <td>
+                    Ventas del dia:@Html.TextBox("datoBuscar")
+                </td>
+                <td>
+                    <input style="text-align:right" type="submit" name="name" value="Buscar" />
+                </td>
+            </tr>
+        </table>
+
+    }
+    <!--Tabla-->
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Juego</th>
+            <th>Cliente</th>
+            <th>Identificacion</th>
+            <th>Fecha del alquiler</th>
+        </tr>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+                <td>@Model.Rows[i][3]</td>
+            </tr>
+        }
+    </table>
+    <!--Otras pestañas-->
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            <a href="@Url.Action("RegistrarAlquiler","Alquileres")">Registrar Alquiler</a>
+        </div>
+    </div>
+
+</body>

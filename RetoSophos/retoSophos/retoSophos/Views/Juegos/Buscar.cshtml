@@ -3,61 +3,69 @@
 @{
     ViewBag.Title = "Buscar";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar</title>
+</head>
 
-<h2>Buscar</h2>
-
-@using (Html.BeginForm("Buscar", "Juegos"))
-{
-    <table class="table table-bordered table-striped">
-
-        <tr>
-            <td>
-                Buscador:@Html.TextBox("datoBuscar")
-            </td>
-            <td>
-                <input style="text-align:right" type="submit" name="name" value="Buscar" />
-            </td>
-        </tr>
-    </table>
-
-}
+<body>
 
 
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>Id</th>
-        <th>Nombres</th>
-        <th>Precio</th>
-        <th>Plataforma</th>
-        <th>Director</th>
-        <th>Protagonistas</th>
-        <th>Productor/Marca</th>
-        <th>fechaLanzamiento</th>
-    </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
+    @using (Html.BeginForm("Buscar", "Juegos"))
     {
-        <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
-            <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
-            <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
-            <td>@Model.Rows[i][6]</td>
-            <td>@Model.Rows[i][7]</td>
-        </tr>
+        <table class="table table-bordered table-striped">
+
+            <tr>
+                <td>
+                    Buscador:@Html.TextBox("datoBuscar")
+                </td>
+                <td>
+                    <input style="text-align:right" type="submit" name="name" value="Buscar" />
+                </td>
+            </tr>
+        </table>
+
     }
 
-</table>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nombres</th>
+            <th>Precio</th>
+            <th>Plataforma</th>
+            <th>Director</th>
+            <th>Protagonistas</th>
+            <th>Productor/Marca</th>
+            <th>fechaLanzamiento</th>
+        </tr>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+                <td>@Model.Rows[i][0]</td>
+                <td>@Model.Rows[i][1]</td>
+                <td>@Model.Rows[i][2]</td>
+                <td>@Model.Rows[i][3]</td>
+                <td>@Model.Rows[i][4]</td>
+                <td>@Model.Rows[i][5]</td>
+                <td>@Model.Rows[i][6]</td>
+                <td>@Model.Rows[i][7]</td>
+            </tr>
+        }
+
+    </table>
 
 
-<div class="card-footer">
-    <div class="d-flex justify-content-center links">
-        <a href="@Url.Action("CrearJuego","Juegos")">Crear Juego Nuevo</a>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            <a href="@Url.Action("CrearJuego","Juegos")">Crear Juego Nuevo</a>
+        </div>
     </div>
-</div>
-<div class="card-footer">
-    <div class="d-flex justify-content-center links">
-        <a href="@Url.Action("EditarPrecio","Juegos")">Editar Precio</a>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            <a href="@Url.Action("EditarPrecio","Juegos")">Editar Precio</a>
+        </div>
     </div>
-</div>
+</body>
+</html>
